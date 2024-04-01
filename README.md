@@ -1,69 +1,99 @@
-# snspj
+# Twitter風SNSアプリ
 
-## Build Setup
+【概要】Twitter風SNSアプリ
 
-```bash
-# install dependencies
-$ yarn install
+【イメージ】
 
-# serve with hot reload at localhost:3000
-$ yarn dev
+<img width="743" alt="home" src="sns_home.png">
 
-# build for production and launch server
-$ yarn build
-$ yarn start
+## 作成した目的
 
-# generate static project
-$ yarn generate
-```
-
-For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
-
-## Special Directories
-
-You can create the following extra directories, some of which have special behaviors. Only `pages` is required; you can delete them if you don't want to use their functionality.
-
-### `assets`
-
-The assets directory contains your uncompiled assets such as Stylus or Sass files, images, or fonts.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/assets).
-
-### `components`
-
-The components directory contains your Vue.js components. Components make up the different parts of your page and can be reused and imported into your pages, layouts and even other components.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/components).
-
-### `layouts`
-
-Layouts are a great help when you want to change the look and feel of your Nuxt app, whether you want to include a sidebar or have distinct layouts for mobile and desktop.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/layouts).
+【背景と目的】 何気ないことをつぶやくことができるTwitter風SNSアプリを作成する。
 
 
-### `pages`
+## 機能一覧
 
-This directory contains your application views and routes. Nuxt will read all the `*.vue` files inside this directory and setup Vue Router automatically.
+| 項目 |
+| ---- |
+| ユーザー認証（Firebase Authentication） |
+| 投稿の一覧表示　追加処理　削除処理 |
+| 投稿した名前と投稿内容が表示される |
+| 投稿の追加 |
+| バツマークを押すと投稿が削除される |
+| いいね機能 |
+| ハートマークを押すと良いね数が増えたり減ったりする |
+| コメント機能 |
+| 矢印マークを押すとコメント画面に遷移する |
+| コメントした名前と投稿内容が表示される |
+| コメントの追加 |
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/get-started/routing).
+## 使用技術
 
-### `plugins`
+* Nuxt v2.15.8
+* vee-validate v3
+* vue v2.7.10
+* @nuxtjs/axios v5.13.6
 
-The plugins directory contains JavaScript plugins that you want to run before instantiating the root Vue.js Application. This is the place to add Vue plugins and to inject functions or constants. Every time you need to use `Vue.use()`, you should create a file in `plugins/` and add its path to plugins in `nuxt.config.js`.
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/plugins).
+## テーブル設計
 
-### `static`
+<img width="743" alt="" src="sns_table.png">
 
-This directory contains your static files. Each file inside this directory is mapped to `/`.
+## ER図
 
-Example: `/static/robots.txt` is mapped as `/robots.txt`.
+<img width="743" alt="" src="user_post.png">
+<img width="743" alt="" src="user_like.png">
+<img width="743" alt="" src="user_comment.png">
+<img width="743" alt="" src="post_like.png">
+<img width="743" alt="" src="post_comment.png">
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/static).
 
-### `store`
+# 環境構築
 
-This directory contains your Vuex store files. Creating a file in this directory automatically activates Vuex.
+## git clone
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).
+先にコピーを保存したいディレクトリに移動してから以下のコマンドを実行します。
+
+`$ git clone git@github.com:magmag6240/snspj.git`
+
+これでNuxtプロジェクトがローカル環境にクローンされます。
+
+## yarnのインストールする
+以下のコマンドでインストールを行います。
+
+`$ node -v # Node.jsのバージョン確認`  
+`$ npm -v # npmのバージョン確認`  
+`$ sudo npm install -g yarn # yarnインストール`  
+
+## Firebaseの設定
+
+https://firebase.google.com/ にてプロジェクトを作りましょう。そして、Firebaseを読み込みましょう。Nuxt.jsのプラグインを使います。
+
+plugins/firebase.jsを作成したプロジェクトに対応するよう、書き換えてください。
+
+## ライブラリの追加
+
+以下のコマンドでライブラリを入れます。
+
+`$ yarn add firebase`  
+`$ yarn add vee-validate@3`  
+
+## 動作確認
+ブラウザに表示する準備は整いました。
+以下のコマンド実行で、動作確認を行ってください。
+
+`$ yarn dev`
+
+
+## ユーザー
+
+* 一般会員（使用可能）：3人
+
+
+### 一般会員
+
+| id | name | email | password |
+| ---- | ---- | ---- | ---- |
+| 1 | test1 | test1@example.com | password |
+| 2 | test2 | test2@example.com | password |
+| 3 | test3 | test3@example.com | password |
